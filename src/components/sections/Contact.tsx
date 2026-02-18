@@ -1,8 +1,12 @@
 import { PlayCircle, Mail } from 'lucide-react'
+import { useState } from 'react'
 import Container from '../ui/Container'
 import Button from '../ui/Button'
+import VideoModal from '../ui/VideoModal'
 
 export default function Contact() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+
   return (
     <section id="request-demo" className="py-20 bg-white dark:bg-gray-900">
       <Container>
@@ -18,11 +22,11 @@ export default function Contact() {
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center pt-4">
-            <Button size="lg" className="gap-2">
+            <Button size="lg" className="gap-2" onClick={() => setIsVideoOpen(true)}>
               <PlayCircle className="w-5 h-5" />
               Watch Demo
             </Button>
-            <Button size="lg" variant="outline" className="gap-2">
+            <Button size="lg" variant="outline" className="gap-2" onClick={() => window.location.href = 'http://www.f2gsolutions.com/'}>
               <Mail className="w-5 h-5" />
               Contact Us
             </Button>
@@ -33,6 +37,8 @@ export default function Contact() {
           </p>
         </div>
       </Container>
+
+      <VideoModal isOpen={isVideoOpen} onClose={() => setIsVideoOpen(false)} />
     </section>
   )
 }

@@ -87,7 +87,7 @@ const DEMO_SCENES: DemoScene[] = [
 const PRODUCT_FEATURES: ProductFeature[] = [
   {
     title: 'Smart Modules',
-    description: 'Voice, SMS, data, and network checks ready to run in two clicks.',
+    description: 'RF logging, airplane mode, data, and network checks ready to run in two clicks.',
     icon: Zap,
   },
   {
@@ -150,7 +150,6 @@ const USE_CASES: UseCaseCard[] = [
     description: 'Drive test execution and network validation with structured evidence.',
     bullets: [
       'Real-time device status monitoring',
-      'Repeatable module execution',
       'Workflow-based campaign control',
       'Clear traceability by run',
     ],
@@ -194,7 +193,7 @@ const USE_CASES: UseCaseCard[] = [
 const FAQ = [
   {
     q: 'How quickly can a team start using MOBIQ?',
-    a: 'Connect devices, run a module, then launch a workflow.',
+    a: 'Connect devices, run a module, build and launch a workflow.',
   },
   {
     q: 'Does MOBIQ work for both lab and field validation?',
@@ -245,6 +244,7 @@ const Presentation: React.FC = () => {
   const [requestNeeds, setRequestNeeds] = useState('');
   const [requestSent, setRequestSent] = useState(false);
   const [frameTilt, setFrameTilt] = useState({ x: 0, y: 0 });
+  const [activeSection, setActiveSection] = useState('');
   const demoVideoRef = useRef<HTMLVideoElement | null>(null);
 
   const handleGetStarted = () => {
@@ -264,6 +264,23 @@ const Presentation: React.FC = () => {
   useEffect(() => {
     window.localStorage.setItem('mobiq-presentation-theme', themeMode);
   }, [themeMode]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['story', 'how-it-works', 'use-cases', 'faq', 'request-demo'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      if (current) setActiveSection('#' + current);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     if (!demoVideoOpen) return;
@@ -308,11 +325,11 @@ const Presentation: React.FC = () => {
         </div>
 
         <nav className="topnav">
-          <a href="#story">Product</a>
-          <a href="#how-it-works">How it works</a>
-          <a href="#use-cases">Use cases</a>
-          <a href="#faq">FAQ</a>
-          <a href="#request-demo">Contact</a>
+          <a href="#story" className={activeSection === '#story' ? 'active' : ''}>Product</a>
+          <a href="#how-it-works" className={activeSection === '#how-it-works' ? 'active' : ''}>How it works</a>
+          <a href="#use-cases" className={activeSection === '#use-cases' ? 'active' : ''}>Use cases</a>
+          <a href="#faq" className={activeSection === '#faq' ? 'active' : ''}>FAQ</a>
+          <a href="#request-demo" className={activeSection === '#request-demo' ? 'active' : ''}>Contact</a>
         </nav>
 
         <div className="topbar-actions">

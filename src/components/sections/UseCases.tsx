@@ -7,7 +7,6 @@ const useCases = [
     description: 'Drive test execution and network validation with structured evidence.',
     bullets: [
       'Real-time device status monitoring',
-      'Repeatable module execution',
       'Workflow-based campaign control',
       'Clear traceability by run',
     ],
@@ -66,7 +65,7 @@ export default function UseCases() {
           {useCases.map((useCase, idx) => (
             <div
               key={idx}
-              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 space-y-4"
+              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 space-y-4 transition-all duration-300 hover:bg-white dark:hover:bg-gray-700 hover:shadow-xl hover:scale-105 cursor-pointer"
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-white dark:bg-gray-900 flex items-center justify-center">

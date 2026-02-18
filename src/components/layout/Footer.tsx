@@ -1,5 +1,6 @@
 import { Linkedin, Youtube } from 'lucide-react'
 import Container from '../ui/Container'
+import p2sLogo from '../../assets/presentation/p2s-logo.png'
 
 const productLinks = [
   { label: 'Features', href: '#story' },
@@ -16,7 +17,7 @@ const resourcesLinks = [
 
 const companyLinks = [
   { label: 'About F2G', href: 'http://www.f2gsolutions.com/' },
-  { label: 'Contact Us', href: '#request-demo' },
+  { label: 'Contact Us', href: 'http://www.f2gsolutions.com/' },
   { label: 'Support', href: '#' },
 ]
 
@@ -28,9 +29,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="space-y-4">
               <div className="flex items-center gap-2.5">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">M</span>
-                </div>
+                <img src={p2sLogo} alt="P2S Logo" className="h-10" />
               </div>
               
               <p className="text-sm leading-relaxed">

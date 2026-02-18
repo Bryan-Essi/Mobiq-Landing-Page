@@ -3,7 +3,7 @@ import Container from '../ui/Container'
 const faqs = [
   {
     q: 'How quickly can a team start using MOBIQ?',
-    a: 'Connect devices, run a module, then launch a workflow. Most teams are up and running in under 5 minutes.',
+    a: 'Connect devices, run a module, build and launch a workflow.',
   },
   {
     q: 'Does MOBIQ work for both lab and field validation?',

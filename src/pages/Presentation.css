@@ -176,6 +176,12 @@
   color: var(--ink-soft);
   font-size: 0.9rem;
   font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.presentation-page .topnav a.active {
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .presentation-page .topnav a:hover {

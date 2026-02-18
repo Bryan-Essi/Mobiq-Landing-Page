@@ -4,7 +4,7 @@ import {
 import Container from '../ui/Container'
 
 const features = [
-  { icon: Zap, title: 'Smart Modules', description: 'Voice, SMS, data, and network checks ready to run in two clicks.' },
+  { icon: Zap, title: 'Smart Modules', description: 'RF logging, airplane mode, data, and network checks ready to run in two clicks.' },
   { icon: Smartphone, title: 'Multi-Device Orchestration', description: 'Run synchronized campaigns across multiple Android devices from one control layer.' },
   { icon: Workflow, title: 'Visual Workflows', description: 'Build repeatable test scenarios with clear visual logic and no heavy scripting.' },
   { icon: ShieldCheck, title: 'Guaranteed Reliability', description: 'Built-in retries and execution guards keep campaigns stable from lab to release.' },
@@ -31,7 +31,7 @@ export default function Features() {
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="text-center space-y-4"
+              className="text-center space-y-4 p-8 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 transition-all duration-300 hover:bg-white dark:hover:bg-gray-700 hover:shadow-xl hover:scale-105 hover:border-gray-300 dark:hover:border-gray-600 cursor-pointer"
             >
               <div className="w-12 h-12 mx-auto rounded-lg bg-accent/10 dark:bg-[#8BADB9]/10 flex items-center justify-center">
                 <feature.icon className="w-6 h-6 text-accent dark:text-[#8BADB9]" />

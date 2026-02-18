@@ -46,7 +46,7 @@ export default function HowItWorks() {
           {steps.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white dark:bg-gray-900 rounded-2xl p-6 space-y-4"
+              className="bg-white dark:bg-gray-900 rounded-2xl p-6 space-y-4 transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer"
             >
               <div className="flex justify-between items-start">
                 <span className="text-sm font-bold text-muted dark:text-gray-400">{item.step}</span>
