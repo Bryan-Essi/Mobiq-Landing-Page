@@ -1,6 +1,7 @@
 [build]
+  base = "Landing-Page-Mobiq-2.0"
   command = "npm run build"
-  publish = "dist"
+  publish = "Landing-Page-Mobiq-2.0/dist"
 
 [[redirects]]
   from = "/*"
