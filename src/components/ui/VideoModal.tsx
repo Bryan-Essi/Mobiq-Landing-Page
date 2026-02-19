@@ -50,7 +50,7 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
               autoPlay
               playsInline
             >
-              <source src="/mobiq-video.mp4" type="video/mp4" />
+              <source src={`${import.meta.env.BASE_URL}mobiq-video.mp4`} type="video/mp4" />
             </video>
           </motion.div>
         </motion.div>
