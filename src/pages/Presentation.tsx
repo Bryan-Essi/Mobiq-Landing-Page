@@ -225,8 +225,7 @@ const fadeIn = (delay = 0) => ({
   transition: { duration: 0.45, ease: 'easeOut' as const, delay },
 });
 
-const DEMO_VIDEO_SRC = '/1.mp4';
-const DEMO_VIDEO_FALLBACK_SRC = '/watch-demo.mp4';
+const DEMO_VIDEO_SRC = '/MOBIQ.mp4';
 const GET_STARTED_URL = 'http://www.f2gsolutions.com/';
 
 const getInitialTheme = (): ThemeMode => {
@@ -286,13 +285,27 @@ const Presentation: React.FC = () => {
     if (!demoVideoOpen) return;
 
     const video = demoVideoRef.current;
-    if (!video) return;
+    if (!video) {
+      console.error('Video element not found');
+      return;
+    }
 
+    console.log('Loading video from:', video.querySelector('source')?.src || 'no source');
+    video.load();
     video.currentTime = 0;
+    
+    video.addEventListener('error', (e) => {
+      console.error('Video error:', e, video.error);
+    });
+    
+    video.addEventListener('loadeddata', () => {
+      console.log('Video loaded successfully');
+    });
+    
     const playPromise = video.play();
     if (playPromise) {
-      playPromise.catch(() => {
-        // Ignore blocked autoplay; controls stay available for manual play.
+      playPromise.catch((error) => {
+        console.log('Video autoplay blocked:', error);
       });
     }
   }, [demoVideoOpen]);
@@ -707,9 +720,14 @@ const Presentation: React.FC = () => {
                   <X size={18} />
                 </button>
               </div>
-              <video ref={demoVideoRef} className="demo-video-player" controls autoPlay playsInline preload="auto">
-                <source src={DEMO_VIDEO_SRC} type="video/mp4" />
-                <source src={DEMO_VIDEO_FALLBACK_SRC} type="video/mp4" />
+              <video 
+                ref={demoVideoRef} 
+                className="demo-video-player" 
+                controls 
+                playsInline
+                preload="auto"
+              >
+                <source src="/MOBIQ.mp4" type="video/mp4" />
               </video>
             </motion.div>
           </motion.div>
